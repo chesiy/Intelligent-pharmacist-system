@@ -10,8 +10,10 @@
 <label>请在此处键入处方信息：</label>
 <form name="script" method="post">
     {{ scri_form.sympt_name2.label }}{{ scri_form.sympt_name2 }}<br>
-    {{ scri_form.drug1_name.label }}{{ scri_form.drug1_name }}<br>
-    {{ scri_form.drug2_name.label }}{{ scri_form.drug2_name }}<br>
+    {{ scri_form.product1_name.label }}{{ scri_form.product1_name }} {{ scri_form.product1_useage.label }}{{ scri_form.product1_useage }}<br>
+    {{ scri_form.product2_name.label }}{{ scri_form.product2_name }} {{ scri_form.product2_useage.label }}{{ scri_form.product2_useage }}<br>
+    {{ scri_form.product3_name.label }}{{ scri_form.product3_name }} {{ scri_form.product3_useage.label }}{{ scri_form.product3_useage }}<br>
+    <hr>
     {{ scri_form.submit2 }}<br>
 </form>
 
