@@ -9,14 +9,15 @@ app = Flask(__name__)
 app.config["SECRET_KEY"] = "12345678"
 
 class symptomForm(FlaskForm):
-    sympt_name=StringField('Symptom:',validators=[DataRequired()])
-    submit1=SubmitField('SUBMIT SYMPTOM')
+    sympt_name=StringField('病症:',validators=[DataRequired()])
+    submit1=SubmitField('提交')
 
 class scriptForm(FlaskForm):
-    sympt_name2=StringField('Symptom:',validators=[DataRequired()])
-    drug1_name=StringField('Drug1:',validators=[DataRequired()])
-    drug2_name=StringField('Drug2:',validators=[DataRequired()])
-    submit2=SubmitField('SUBMIT SCRIPT')
+    sympt_name2=StringField('病症：',validators=[DataRequired()])
+    product1_name=StringField('药品1:',validators=[DataRequired()])
+    product2_name=StringField('药品2:',validators=[DataRequired()])
+    product3_name = StringField('药品3:', validators=[DataRequired()])
+    submit2=SubmitField('提交处方')
 
 @app.route('/',methods=['POST','GET'])
 def homepage():
