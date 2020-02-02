@@ -49,6 +49,13 @@ def get_drug_from_product(productname): #由药品查药物
 
 def get_usage_from_product(productname): #由药品查用法
     graph = Graph("bolt://localhost:7687", username="neo4j", password="123456")
-    str = 'MATCH a=(Product{name:\'' + productname + '\'})-[:用法]->(Usage) return Usage.frequency,Usage.useage,Usage.consumption,Usage.notes'
-    result_list = list(graph.run(str).data())
-    print(result_list)
+    strr = 'MATCH a=(Product{name:\'' + productname + '\'})-[:用法]->(Usage) return Usage.frequency,Usage.useage,Usage.consumption,Usage.notes'
+    result_list = list(graph.run(strr).data())
+    for index in result_list:
+        result_usage={}
+        result_usage['frequency']=index['Usage.frequency']
+        result_usage['usage']=index['Usage.useage']
+        result_usage['consumption']=index['Usage.consumption']
+        result_usage['notes']=index['Usage.notes']
+        print(result_usage)
+        return result_usage

@@ -4,6 +4,7 @@
     <list default="true" id="5e41aff8-12c9-4e92-8b49-d57af7dffd77" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_neo.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_neo.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/Check_script.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Check_script.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -15,8 +16,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Flask Main" />
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -87,7 +88,16 @@
       <workItem from="1580456525233" duration="13609000" />
       <workItem from="1580522614067" duration="1852000" />
       <workItem from="1580532672197" duration="1385000" />
-      <workItem from="1580541701146" duration="3111000" />
+      <workItem from="1580541701146" duration="3372000" />
+      <workItem from="1580546494899" duration="1403000" />
+      <workItem from="1580548510802" duration="1223000" />
+      <workItem from="1580560028052" duration="5264000" />
+      <workItem from="1580610851498" duration="365000" />
+      <workItem from="1580614608596" duration="1292000" />
+      <workItem from="1580618288826" duration="3410000" />
+      <workItem from="1580628629800" duration="2971000" />
+      <workItem from="1580641917635" duration="633000" />
+      <workItem from="1580643522527" duration="12085000" />
     </task>
     <task id="LOCAL-00001" summary="now,I can use redirect!">
       <created>1580116985681</created>
@@ -131,11 +141,28 @@
       <option name="project" value="LOCAL" />
       <updated>1580485854268</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Help!!!!">
+      <created>1580545071915</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1580545071915</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="now,I can use redirect!" />
@@ -144,33 +171,38 @@
     <MESSAGE value="table! great!" />
     <MESSAGE value="upd" />
     <MESSAGE value="script view is ok" />
-    <option name="LAST_COMMIT_MESSAGE" value="script view is ok" />
+    <MESSAGE value="Help!!!!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Help!!!!" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="403" y="26" key="CommitChangelistDialog2" timestamp="1580485853213">
+    <state x="403" y="26" key="CommitChangelistDialog2" timestamp="1580545071031">
       <screen x="62" y="0" width="1474" height="864" />
     </state>
-    <state x="403" y="26" key="CommitChangelistDialog2/62.0.1474.864@62.0.1474.864" timestamp="1580485853213" />
-    <state width="1400" height="181" key="GridCell.Tab.0.bottom" timestamp="1580544927469">
+    <state x="403" y="26" key="CommitChangelistDialog2/62.0.1474.864@62.0.1474.864" timestamp="1580545071031" />
+    <state width="1431" height="180" key="GridCell.Tab.0.bottom" timestamp="1580656795279">
       <screen x="62" y="0" width="1474" height="864" />
     </state>
-    <state width="1400" height="181" key="GridCell.Tab.0.bottom/62.0.1474.864@62.0.1474.864" timestamp="1580544927469" />
-    <state width="1400" height="181" key="GridCell.Tab.0.center" timestamp="1580544927468">
+    <state width="1431" height="180" key="GridCell.Tab.0.bottom/62.0.1474.864@62.0.1474.864" timestamp="1580656795279" />
+    <state width="1431" height="180" key="GridCell.Tab.0.center" timestamp="1580656795278">
       <screen x="62" y="0" width="1474" height="864" />
     </state>
-    <state width="1400" height="181" key="GridCell.Tab.0.center/62.0.1474.864@62.0.1474.864" timestamp="1580544927468" />
-    <state width="1400" height="181" key="GridCell.Tab.0.left" timestamp="1580544927468">
+    <state width="1431" height="180" key="GridCell.Tab.0.center/62.0.1474.864@62.0.1474.864" timestamp="1580656795278" />
+    <state width="1431" height="180" key="GridCell.Tab.0.left" timestamp="1580656795278">
       <screen x="62" y="0" width="1474" height="864" />
     </state>
-    <state width="1400" height="181" key="GridCell.Tab.0.left/62.0.1474.864@62.0.1474.864" timestamp="1580544927468" />
-    <state width="1400" height="181" key="GridCell.Tab.0.right" timestamp="1580544927469">
+    <state width="1431" height="180" key="GridCell.Tab.0.left/62.0.1474.864@62.0.1474.864" timestamp="1580656795278" />
+    <state width="1431" height="180" key="GridCell.Tab.0.right" timestamp="1580656795279">
       <screen x="62" y="0" width="1474" height="864" />
     </state>
-    <state width="1400" height="181" key="GridCell.Tab.0.right/62.0.1474.864@62.0.1474.864" timestamp="1580544927469" />
-    <state x="188" y="257" key="com.intellij.ide.util.TipDialog" timestamp="1580541701964">
+    <state width="1431" height="180" key="GridCell.Tab.0.right/62.0.1474.864@62.0.1474.864" timestamp="1580656795279" />
+    <state x="623" y="143" key="RollbackChangesDialog" timestamp="1580548628453">
       <screen x="62" y="0" width="1474" height="864" />
     </state>
-    <state x="188" y="257" key="com.intellij.ide.util.TipDialog/62.0.1474.864@62.0.1474.864" timestamp="1580541701964" />
+    <state x="623" y="143" key="RollbackChangesDialog/62.0.1474.864@62.0.1474.864" timestamp="1580548628453" />
+    <state x="188" y="257" key="com.intellij.ide.util.TipDialog" timestamp="1580643562850">
+      <screen x="62" y="0" width="1474" height="864" />
+    </state>
+    <state x="188" y="257" key="com.intellij.ide.util.TipDialog/62.0.1474.864@62.0.1474.864" timestamp="1580643562850" />
     <state x="593" y="350" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1580545053042">
       <screen x="62" y="0" width="1474" height="864" />
     </state>
@@ -181,6 +213,6 @@
     <state x="78" y="185" width="672" height="678" key="search.everywhere.popup/62.0.1474.864@62.0.1474.864" timestamp="1580543890138" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/learn_flask$learn_flask.coverage" NAME="learn_flask Coverage Results" MODIFIED="1580544927461" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/learn_flask$learn_flask.coverage" NAME="learn_flask Coverage Results" MODIFIED="1580656795261" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>
