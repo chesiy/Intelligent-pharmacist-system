@@ -59,3 +59,58 @@ def get_usage_from_product(productname): #由药品查用法
         result_usage['notes']=index['Usage.notes']
         print(result_usage)
         return result_usage
+
+def get_caution_people_from_drug(drugname): #由药物查慎用人群
+    graph = Graph("bolt://localhost:7687", username="neo4j", password="123456")
+    str = 'MATCH a=(drug{name:\'' + drugname + '\'})-[:慎用]->(people) return people.name'
+    result_list = list(graph.run(str).data())
+    result_people = []
+    for oneresult in result_list:
+        result_people.append(oneresult['people.name'])
+    return result_people
+
+def get_prohibit_people_from_drug(drugname): #由药品查禁用人群
+    graph = Graph("bolt://localhost:7687", username="neo4j", password="123456")
+    str = 'MATCH a=(drug{name:\'' + drugname + '\'})-[:禁用]->(people) return people.name'
+    result_list = list(graph.run(str).data())
+    result_people = []
+    for oneresult in result_list:
+        result_people.append(oneresult['people.name'])
+    return result_people
+
+def get_caution_symptom_from_drug(drugname): #由药物查慎用疾病
+    graph = Graph("bolt://localhost:7687", username="neo4j", password="123456")
+    str = 'MATCH a=(drug{name:\'' + drugname + '\'})-[:慎用]->(symptom) return symptom.name'
+    result_list = list(graph.run(str).data())
+    result_symptom = []
+    for oneresult in result_list:
+        result_symptom.append(oneresult['symptom.name'])
+    return result_symptom
+
+def get_prohibit_symptom_from_drug(drugname): #由药物查禁用疾病
+    graph = Graph("bolt://localhost:7687", username="neo4j", password="123456")
+    str = 'MATCH a=(drug{name:\'' + drugname + '\'})-[:禁用]->(symptom) return symptom.name'
+    result_list = list(graph.run(str).data())
+    result_symptom = []
+    for oneresult in result_list:
+        result_symptom.append(oneresult['symptom.name'])
+    return result_symptom
+
+def get_caution_drug_from_drug(drugname): #由药物查慎用药物
+    graph = Graph("bolt://localhost:7687", username="neo4j", password="123456")
+    str = 'MATCH a=(drug{name:\'' + drugname + '\'})-[:慎用]->(drug) return drug.name'
+    result_list = list(graph.run(str).data())
+    result_drug = []
+    for oneresult in result_list:
+        result_drug.append(oneresult['drug.name'])
+    return result_drug
+
+def get_prohibit_drug_from_drug(drugname): #由药物查禁用药物
+    graph = Graph("bolt://localhost:7687", username="neo4j", password="123456")
+    str = 'MATCH a=(drug{name:\'' + drugname + '\'})-[:禁用]->(drug) return drug.name'
+    result_list = list(graph.run(str).data())
+    result_drug = []
+    for oneresult in result_list:
+        result_drug.append(oneresult['drug.name'])
+    return result_drug
+

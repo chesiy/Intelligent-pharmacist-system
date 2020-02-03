@@ -1,7 +1,8 @@
 from flask import Flask, render_template
 from flask import request, redirect, url_for
 from flask_wtf import FlaskForm
-from my_neo import get_drug, get_drug_from_product, get_drug_from_symptom, get_usage_from_product
+from my_neo import get_drug, get_drug_from_product, get_drug_from_symptom, get_usage_from_product,get_caution_people_from_drug,get_prohibit_people_from_drug
+from my_neo import get_caution_symptom_from_drug,get_prohibit_symptom_from_drug,get_caution_drug_from_drug,get_prohibit_drug_from_drug
 from wtforms import StringField, SubmitField, SelectField, IntegerField,FloatField
 from wtforms.validators import DataRequired
 
@@ -99,6 +100,11 @@ def checkScript():
         product_amount2.append(script_form.amount22.data)
         product_amount2.append(script_form.amount23.data)
 
+        people_age=script_form.people_age.data
+        str1=['否', '哺乳期妇女', '过敏患者','妊娠期妇女', '老年人', '未成年人','未成熟儿', '新生儿', '孕妇', '早产儿']
+        specific_people=str1[int(script_form.specific_people.data)]
+        disease=script_form.diseases.data
+
         product_num = 0
         for onename in product_name:
             if onename != '':
@@ -109,15 +115,42 @@ def checkScript():
         SuitableDrugs = get_drug_from_symptom(symp2_name)
 
         cnt = 0
+        Drugs=[]
         for oneproductname in product_name:
             if not ((product_amount1 != '' and product_frequency != '') or (
                     product_amount2 != '' and product_fre != '')):
                 return '验证失败，用量信息未填写完整'
-            for onedrug in get_drug_from_product(oneproductname):  # 验证药品与疾病是否对应
+            drugs=get_drug_from_product(oneproductname)
+            Drugs.extend(drugs)
+            for onedrug in drugs:  # 验证药品与疾病是否对应
+                cautionPeo=get_caution_people_from_drug(onedrug)
+                prohibitPeo=get_prohibit_people_from_drug(onedrug)
+                cautionSym=get_caution_symptom_from_drug(onedrug)
+                prohibitSym=get_prohibit_symptom_from_drug(onedrug)
+
+                if specific_people!='否' and specific_people in prohibitPeo:  #验证人群是否需禁用
+                    return '验证失败，该人群需禁用处方上的药品'
+                if specific_people!='否' and specific_people in cautionPeo:  #验证人群是否需慎用
+                    return '验证失败，该人群需慎用处方上的药品'
+                if disease is not None and disease in prohibitSym:   #验证患有基础疾病是否该禁用
+                    return '验证失败，患有该疾病的患者禁用处方上的药品'
+                if disease is not None and disease in cautionSym:    #验证患有基础疾病是否该慎用
+                    return '验证失败，患有该疾病的患者慎用处方上的药品'
+
                 if onedrug in SuitableDrugs:
                     cnt = cnt + 1
         if cnt != product_num:
             return '验证失败，处方中的药品不应被用于治疗该疾病'
+
+        for onedrug in Drugs:                        #验证处方中药品能否共用
+            cautionDrugs = get_caution_drug_from_drug(onedrug)
+            prohibitDrugs = get_prohibit_drug_from_drug(onedrug)
+            for one_cautionDrug in cautionDrugs:
+                if one_cautionDrug in Drugs:
+                    return '验证失败，处方中药品共用需谨慎'
+            for one_prohibitDrug in prohibitDrugs:
+                if one_prohibitDrug in Drugs:
+                    return '验证失败，处方中药品禁止共用'
 
         for oneproductname in product_name:  # 验证用法用量是否正确
             if (oneproductname != ''):
