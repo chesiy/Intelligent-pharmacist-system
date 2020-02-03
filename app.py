@@ -95,9 +95,9 @@ def checkScript():
         product_fre.append(script_form.fre1.data)
         product_fre.append(script_form.fre2.data)
         product_fre.append(script_form.fre3.data)
-        product_amount2.append(script_form.amount21)
-        product_amount2.append(script_form.amount22)
-        product_amount2.append(script_form.amount23)
+        product_amount2.append(script_form.amount21.data)
+        product_amount2.append(script_form.amount22.data)
+        product_amount2.append(script_form.amount23.data)
 
         product_num = 0
         for onename in product_name:
@@ -131,8 +131,8 @@ def checkScript():
                         index3 = -1
                         if Usage['frequency'].find('-') != -1:  # 解决有些是~，有些是-
                             index3 = Usage['frequency'].find('-')
-                        elif Usage['frequency'].find('~') != -1:
-                            index3 = Usage['frequency'].find('~')
+                        elif Usage['frequency'].find('～') != -1:
+                            index3 = Usage['frequency'].find('～')
                         if index3 == -1:  # 一个数字的情况  #频率
                             if int(result) != product_frequency[product_name.index(oneproductname)]:
                                 return '验证失败，处方中药品的用药频率有误'
@@ -149,15 +149,11 @@ def checkScript():
                             index_1 = -1
                             if Usage['consumption'].find('-') != -1: #这里的-需改为中文！！！！！！！！
                                 index_1 = Usage['consumption'].find('-')
-                                print('aaa',index_1)
                             elif Usage['consumption'].find('～') != -1:
                                 index_1 = Usage['consumption'].find('～')
-                                print('aaa', index_1)
-                            print('!!!!!!!!!!', index_1)
                             if index == -1:  # 没有/kg/日
                                 mg_index = Usage['consumption'].find('mg')
                                 if mg_index != -1:  # 单位为mg
-                                    print('hhhhhhhh')
                                     result = Usage['consumption'][0:mg_index]
                                     if index_1 == -1 and float(result) != product_amount1[
                                         product_name.index(oneproductname)]:
@@ -180,15 +176,53 @@ def checkScript():
                         index1 = Usage['frequency'].find('每')
                         index2 = Usage['frequency'].find('小')
                         result = Usage['frequency'][index1 + 1:index2]
-                        if result.isdigit():
+                        index3 = -1
+                        if Usage['frequency'].find('-') != -1:  # 解决有些是~，有些是-
+                            index3 = Usage['frequency'].find('-')
+                        elif Usage['frequency'].find('～') != -1:
+                            index3 = Usage['frequency'].find('～')
+                        if index3 == -1:  # 一个数字的情况  #频率
                             if int(result) != product_fre[product_name.index(oneproductname)]:
                                 return '验证失败，处方中药品的用药频率有误'
-                        elif not (int(result[0]) <= product_fre[product_name.index(oneproductname)] <= int(result[2])):
+                            else:
+                                print('pass fre1')
+                        elif not (int(result[0:index3]) <= product_fre[product_name.index(oneproductname)] <= int(
+                                result[index3 + 1:])):  # a-b的情况
                             return '验证失败，处方中药品的用药频率有误'
-                    return 'Success'
+                        else:
+                            print('pass fre2')
 
+                        if Usage['consumption'] != None and Usage['consumption'][0] != '':  # 用量
+                            index = Usage['consumption'].find('/')
+                            index_1 = -1
+                            if Usage['consumption'].find('-') != -1:  # 这里的-需改为中文！！！！！！！！
+                                index_1 = Usage['consumption'].find('-')
+                            elif Usage['consumption'].find('～') != -1:
+                                index_1 = Usage['consumption'].find('～')
+
+                            if index == -1:  # 没有/kg/日
+                                mg_index = Usage['consumption'].find('mg')
+                                if mg_index != -1:  # 单位为mg
+                                    result = Usage['consumption'][0:mg_index]
+                                    if index_1 == -1 and float(result) != product_amount2[
+                                        product_name.index(oneproductname)]:
+                                        return '验证失败，处方中药品的用量有误'
+                                    elif index_1 != -1 and not (float(result[0:index_1]) <= product_amount2[
+                                        product_name.index(oneproductname)] <= float(result[index_1 + 1:])):
+                                        return '验证失败，处方中药品的用量有误'
+                                else:
+                                    g_index = Usage['consumption'].find('g')  # 单位为g
+                                    if g_index != -1:
+                                        result = Usage['consumption'][0:g_index]
+                                        if index_1 == -1 and float(result) * 1000 != product_amount2[
+                                            product_name.index(oneproductname)]:
+                                            return '验证失败，处方中药品的用量有误'
+                                        elif index_1 != -1 and not (float(result[0:index_1]) * 1000 <= product_amount2[
+                                            product_name.index((oneproductname))] <= float(result[index_1 + 1:])):
+                                            return '验证失败，处方中药品的用量有误'
                 else:
                     return '验证失败，用法错误'
+        return '验证成功'
     return render_template('Check_script.html', scri_form=script_form)
 
 
